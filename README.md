@@ -18,14 +18,24 @@ A key constraint in this problem is that the model should rely only on informati
 
 The dataset used in this project contains client information, campaign details, and outcomes from previous marketing contacts. It includes variables such as:
 
-- demographic information
-- financial status
-- contact method
-- campaign timing
-- previous campaign outcome
+- age: Age of the customer  
+- job: Type of job held by the customer  
+- marital: Marital status of the customer  
+- education: Education level of the customer  
+- default: Whether the customer has credit in default  
+- housing: Whether the customer has a housing loan  
+- loan: Whether the customer has a personal loan  
+- contact: Whether the customer was contacted 
+- month: Month of the last contact with the customer  
+- duration: Duration of the last contact, in seconds  
+- campaign: Number of contacts performed during the current campaign for this customer  
+- pdays: Number of days since the customer was last contacted in a previous campaign; `999` means the customer was not previously contacted  
+- previous: Number of contacts performed before the current campaign  
+- poutcome: Outcome of the previous marketing campaign  
+
 
 Target variable:
-- `y` → whether the client subscribed to a term deposit
+- y → whether the client subscribed to a term deposit
 
 ## Project Workflow
 
@@ -40,67 +50,10 @@ Target variable:
 
 ### 3. Feature Engineering
 Created additional features to improve signal capture:
-- `age_band`
-- `is_contacted_before`
-- `was_previously_successful`
+- age_band
+- is_contacted_before
+- was_previously_successful
 
-### 4. Preprocessing
-Used a `ColumnTransformer` and `Pipeline` to ensure consistent preprocessing:
-- numerical features → median imputation + standard scaling
-- categorical features → most-frequent imputation + one-hot encoding
-
-### 5. Model Training and Comparison
-The following models were trained and evaluated:
-- Logistic Regression
-- Random Forest
-- XGBoost
-
-### 6. Hyperparameter Tuning
-- applied `RandomizedSearchCV` to XGBoost
-- used 5-fold cross-validation
-- optimized for F1-score
-
-### 7. Threshold Tuning
-Because the target classes are imbalanced, the default classification threshold of 0.50 was not assumed to be optimal. Multiple thresholds were evaluated on the validation set, and the best threshold for F1-score was selected.
-
-### 8. Model Evaluation
-Models were assessed using:
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- ROC-AUC
-- Average Precision
-
-Additional evaluation included:
-- confusion matrices
-- ROC curve
-- precision-recall curve
-- calibration curve
-
-### 9. Final Model
-XGBoost was selected as the final model based on validation performance and business relevance. After threshold tuning, the final model was retrained on the combined training and validation data and evaluated on the holdout test set.
-
-## Final Results
-
-Final XGBoost test performance:
-
-- **Threshold:** 0.21
-- **Accuracy:** 0.8779
-- **Precision:** 0.4801
-- **Recall:** 0.5236
-- **F1-score:** 0.5009
-- **ROC-AUC:** 0.8055
-- **Average Precision:** 0.4665
-
-These results show that the model provides a useful balance between precision and recall while maintaining solid ranking performance on unseen data.
-
-## Key Insights
-
-- previous campaign success was one of the strongest predictive signals
-- contact method and month of contact contributed meaningfully to performance
-- excluding leakage features made the project more realistic and operationally relevant
-- threshold tuning produced more practical results than relying on the default cutoff
 
 ## Technologies Used
 
