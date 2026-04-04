@@ -54,6 +54,15 @@ Created additional features to improve signal capture:
 - is_contacted_before
 - was_previously_successful
 
+### 4. Preprocessing
+Used a `ColumnTransformer` and `Pipeline` to ensure consistent preprocessing:
+- numerical features → median imputation + standard scaling
+- categorical features → most-frequent imputation + one-hot encoding
+
+### 5. Model Training and Comparison
+The following models were trained and evaluated:
+- Logistic Regression
+
 
 ## Technologies Used
 
@@ -63,5 +72,5 @@ Created additional features to improve signal capture:
 - matplotlib
 - seaborn
 - scikit-learn
-- XGBoost
+
 
