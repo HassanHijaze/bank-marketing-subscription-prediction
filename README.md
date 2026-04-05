@@ -62,6 +62,16 @@ Used a `ColumnTransformer` and `Pipeline` to ensure consistent preprocessing:
 ### 5. Model Training and Comparison
 The following models were trained and evaluated:
 - Logistic Regression
+- Random Forest
+- XGBoost
+
+### 6. Hyperparameter Tuning
+- applied `RandomizedSearchCV` to XGBoost
+- optimized for F1-score
+
+### 7. Threshold Tuning
+Because the target classes are imbalanced, the default classification threshold of 0.50 was not assumed to be optimal. Multiple thresholds were evaluated on the validation set, and the best threshold for F1-score was selected.
+
 
 
 ## Technologies Used
@@ -72,5 +82,7 @@ The following models were trained and evaluated:
 - matplotlib
 - seaborn
 - scikit-learn
+- XGBoost
+
 
 
