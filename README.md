@@ -72,6 +72,20 @@ The following models were trained and evaluated:
 ### 7. Threshold Tuning
 Because the target classes are imbalanced, the default classification threshold of 0.50 was not assumed to be optimal. Multiple thresholds were evaluated on the validation set, and the best threshold for F1-score was selected.
 
+### 8. Model Evaluation
+Models were assessed using:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- ROC-AUC
+- Average Precision
+
+Additional evaluation included:
+- confusion matrices
+- ROC curve
+- precision-recall curve
+- calibration curve
 
 
 ## Technologies Used
