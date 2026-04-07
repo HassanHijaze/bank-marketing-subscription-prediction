@@ -88,6 +88,32 @@ Additional evaluation included:
 - calibration curve
 
 
+### 9. Final Model
+XGBoost was selected as the final model based on validation performance and business relevance. After threshold tuning, the final model was retrained on the combined training and validation data and evaluated on the holdout test set.
+
+## Final Results
+
+Final XGBoost test performance:
+
+- **Threshold:** 0.25
+- **Accuracy:** 0.8779
+- **Precision:** 0.4801
+- **Recall:** 0.5236
+- **F1-score:** 0.5009
+- **ROC-AUC:** 0.8055
+- **Average Precision:** 0.4665
+
+These results show that the model provides a useful balance between precision and recall while maintaining solid ranking performance on unseen data.
+
+
+## Key Insights
+
+- previous campaign success was one of the strongest predictive signals
+- contact method and month of contact contributed meaningfully to performance
+- excluding leakage features made the project more realistic and operationally relevant
+- threshold tuning produced more practical results than relying on the default cutoff
+
+
 ## Technologies Used
 
 - Python
